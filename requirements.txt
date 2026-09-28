@@ -1,0 +1,17 @@
+# --- Common ---
+opencv-python>=4.9.0
+mediapipe>=0.10.9
+numpy>=1.24
+
+# --- Pose backbone ---
+# On the RTX 3060 dev box: install the standard PyTorch CUDA wheel first
+# (see README, torch.org selector), then:
+ultralytics>=8.2.0
+
+# On the Jetson Orin Nano: DO NOT pip-install torch from PyPI (no CUDA
+# support for Jetson's aarch64 + Tegra stack). Instead:
+#   1. Flash JetPack 6.x (ships CUDA, cuDNN, TensorRT for the Orin Nano).
+#   2. Install NVIDIA's prebuilt torch/torchvision wheels for that JetPack
+#      version (see NVIDIA Jetson Zoo / forums for the current wheel URLs).
+#   3. pip install ultralytics --no-deps   (avoid it pulling a PyPI torch)
+#   4. pip install onnx onnxsim (needed by export_tensorrt.py's TRT export path)
